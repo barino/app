@@ -1,11 +1,4 @@
 #EXTM3U
-#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=110000
-http://jonasbucket1.s3.amazonaws.com/4c4ca2a0338a64098c884afeb0180026_110k.m3u8
-#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=110000
-http://jonasbucket1.s3.amazonaws.com/4c4ca2a0338a64098c884afeb0180026_200k.m3u8
-#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=110000
-http://jonasbucket1.s3.amazonaws.com/4c4ca2a0338a64098c884afeb0180026_400k.m3u8
-#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=110000
-http://jonasbucket1.s3.amazonaws.com/4c4ca2a0338a64098c884afeb0180026_600k.m3u8
-#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=110000
-http://jonasbucket1.s3.amazonaws.com/4c4ca2a0338a64098c884afeb0180026_800k.m3u8
+#EXT-X-MEDIA:TYPE=SUBTITLES,GROUP-ID="sub1",CHARACTERISTICS="public.accessibility.transcribes-spoken-dialog",NAME="English",AUTOSELECT=YES,DEFAULT=NO,FORCED=NO,LANGUAGE="en-US",URI="https://res.cloudinary.com/triggerz-eu-cld/raw/upload/v1605598514/HabitDrivers/Videos/HabitDrivers_for_Teams.mp4.vtt"
+#EXT-X-STREAM-INF:BANDWIDTH=678000,CODECS="avc1.640028,mp4a.40.2",RESOLUTION=1152x720,SUBTITLES="sub1"
+https://enma.vizcloud.ink/simple/EqPFI_4QWADtjDlGha7rC5cu+VwauPfvFgJ7rqk+wYMnU94US2El/br/H2/v.m3u8
