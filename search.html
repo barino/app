@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>محرك البحث</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    tr:hover {
+      background-color: #f5f5f5;
+    }
+  </style>
+</head>
+<body>
+  <h1>محرك البحث</h1>
+  <input type="text" id="searchInput" placeholder="ابحث هنا...">
+  <table id="searchTable">
+    <thead>
+      <tr>
+        <th>الاسم</th>
+        <th>الرابط</th>
+        <th>الوصف</th>
+        <th>الصورة</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- سيتم ملء الجدول هنا بواسطة البرنامج النصي -->
+    </tbody>
+  </table>
+
+  <script>
+    // جلب بيانات الجدول من الرابط
+    fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vTS2C7B7vMnMWNPAz4cPtm2npRntrEoWfqBZNAKkcbQN5-ZvahKVCajJP-q9es6oqJ_BPqgdTzPVvHj/pubhtml')
+      .then(response => response.text())
+      .then(data => {
+        // استخراج صفوف البيانات من الجدول
+        const rows = data.match(/<tr[^>]*>(.*?)<\/tr>/g);
+
+        // ملء الجدول بالبيانات
+        const tableBody = document.querySelector('#searchTable tbody');
+        rows.forEach(row => {
+          const rowData = row.match(/<td[^>]*>(.*?)<\/td>/g).map(td => td.replace(/<\/?td[^>]*>/g, ''));
+          const name = rowData[0];
+          const url = rowData[1];
+          const description = rowData[2];
+          const picture = rowData[3];
+          const tableRow = document.createElement('tr');
+          tableRow.innerHTML = `
+            <td>${name}</td>
+            <td><a href="${url}" target="_blank">${url}</a></td>
+            <td>${description}</td>
+            <td><img src="${picture}" alt="${name}" height="100"></td>
+          `;
+          tableBody.appendChild(tableRow);
+        });
+      });
+
+    // البحث عن البيانات
+    const searchInput = document.querySelector('#searchInput');
+    searchInput.addEventListener('input', () => {
+      const filter = searchInput.value.toLowerCase();
+      const tableRows = document.querySelectorAll('#searchTable tbody tr');
+      tableRows.forEach(row => {
+        const name = row.querySelector('td:first-child').textContent.toLowerCase();
+        if (name.includes(filter)) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
