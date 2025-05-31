@@ -1,11 +1,1389 @@
-<html><head>
-<meta name="title" content="Best IPTV Services  Free ">
-<meta name="description" content="The IPTV free trial allows unlimited access to all our premium channels, Tv-shows, and Movies.The free trial period of IPTV is available for 24 hours.">
-<meta name="keywords" content="IPTV free,Best IPTV,iptv,IPTV free,free iptv,FREE STBEMU PORTAL,IPTV XTREAM CODES">
-<meta name="robots" content="index, follow">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="language" content="English">
-<meta name="revisit-after" content="1 days">
-  </head>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management System</title>
 
-<body><META HTTP-EQUIV="Refresh" CONTENT="0;URL=https://bestbuyiptv.shop/price/index.html?a=iptvplan"></body></html>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+        body {
+            font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f8f9fa;
+            color: #212529;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* --- Sidebar --- */
+        .sidebar {
+            width: 280px;
+            background-color: #212529;
+            color: #dee2e6;
+            padding: 1.5rem 1rem;
+            overflow-y: auto;
+            transition: width 0.3s ease;
+            height: 100vh;
+            box-shadow: 0.125rem 0 0.5rem rgba(0,0,0,0.1); /* Adjusted for LTR */
+            scrollbar-width: thin;
+            scrollbar-color: #6c757d #343a40;
+        }
+        .sidebar::-webkit-scrollbar { width: 8px; }
+        .sidebar::-webkit-scrollbar-track { background: #343a40; }
+        .sidebar::-webkit-scrollbar-thumb { background-color: #6c757d; border-radius: 4px; border: 2px solid #343a40; }
+
+        .sidebar-header h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #0d6efd;
+            font-size: 1.6em;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .sidebar-header h2 .material-icons {
+            font-size: 1.3em;
+            margin-right: 0.5rem; /* LTR */
+        }
+
+        .sidebar .list-group-item {
+            background-color: transparent;
+            border: none;
+            color: #adb5bd;
+            padding: 0.8rem 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            border-radius: 0.3rem;
+        }
+        .sidebar .list-group-item:hover {
+            background-color: #343a40;
+            color: #f8f9fa;
+        }
+        .sidebar .list-group-item.active {
+            background-color: #0d6efd;
+            color: #fff;
+            font-weight: 500;
+        }
+        .sidebar .list-group-item .item-text-icon-wrapper {
+            display: flex;
+            align-items: center;
+        }
+        .sidebar .list-group-item .material-icons.item-icon {
+            margin-right: 0.75rem; /* LTR */
+            font-size: 1.25rem;
+        }
+        .sidebar .list-group-item .arrow-icon {
+            transition: transform 0.3s ease;
+            font-size: 1.5rem;
+            /* keyboard_arrow_left icon points left. When open, rotate to point down. */
+        }
+        .sidebar .list-group-item.open .arrow-icon {
+            transform: rotate(-90deg); /* Points down */
+        }
+
+        .subcategories {
+            list-style: none;
+            padding-left: 1.75rem; /* LTR */
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+         .subcategories .list-group-item {
+            font-size: 0.9em;
+            padding: 0.65rem 1rem;
+        }
+        .subcategories .list-group-item.active {
+            background-color: #0b5ed7;
+        }
+
+
+        /* --- Main Content --- */
+        .main-content {
+            flex-grow: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            height: 100vh;
+            background-color: #ffffff;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .header h1 {
+            margin: 0;
+            color: #343a40;
+            font-size: 1.1em;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-right: 1rem; /* LTR */
+        }
+        .header .controls {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            flex-wrap: nowrap;
+        }
+         .header .btn, .header .form-select, .header .form-control, .header .dropdown-toggle {
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+        .header .btn .material-icons {
+            font-size: 1.1em; vertical-align: text-bottom; margin-right: 0.25em; /* LTR */
+        }
+        /* Bootstrap handles dropdown menu positioning for LTR/RTL based on dir attribute */
+
+
+        /* --- View Modes --- */
+        .items-container {
+            gap: 1.25rem;
+        }
+
+        /* Grid View */
+        .items-container.grid-view {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .item-card {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center; /* Original was center, fine for LTR */
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            position: relative;
+        }
+        .item-card:hover {
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+        }
+        .item-card img {
+            max-width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 12px;
+            cursor: pointer;
+        }
+        .item-card h3 {
+            margin: 10px 0 5px;
+            color: #34495e;
+            font-size: 1.1em;
+        }
+        .item-card p {
+            margin: 5px 0;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .item-card .quantity {
+            font-weight: bold;
+            color: #1abc9c;
+        }
+        .item-card .low-stock-warning {
+            position: absolute;
+            top: 10px;
+            right: 10px; /* LTR */
+            background-color: #e74c3c;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.75em;
+            font-weight: bold;
+        }
+        .item-card .actions {
+            margin-top: 10px;
+        }
+        .item-card .actions button {
+            background: none;
+            border: none;
+            color: #3498db;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin: 0 5px;
+            padding: 5px;
+        }
+        .item-card .actions button:hover {
+            text-decoration: underline;
+        }
+
+
+        /* List View */
+        .items-container.list-view .list-item {
+            display: flex; align-items: center; background-color: #fff;
+            border: 1px solid #dee2e6; border-radius: 0.375rem;
+            padding: 1rem; margin-bottom: 0.75rem; transition: box-shadow 0.2s ease;
+        }
+        .items-container.list-view .list-item:hover { box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,0.075); }
+
+        .list-item img { /* Applies to multiple views */
+            width: 70px; height: 70px; object-fit: cover;
+            border-radius: 0.25rem; margin-right: 1rem; /* LTR */
+            cursor: zoom-in;
+        }
+        .list-item-info { /* Applies to multiple views */
+            flex-grow: 1; text-align: left; /* LTR */
+        }
+        .list-item-info h3 { margin: 0 0 0.25rem; font-size: 1.05em; color: #343a40; font-weight: 600;}
+        .list-item-info p { margin: 0.15rem 0; font-size: 0.85em; color: #6c757d; }
+        .list-item .quantity-info { font-size: 0.85em; color: #6c757d; }
+        .list-item .quantity { font-weight: bold; color: #0d6efd; }
+        .list-item .low-stock-warning {
+            background-color: #dc3545; color: white; padding: 0.2rem 0.4rem;
+            border-radius: 0.2rem; font-size: 0.7em; margin-left: auto; /* LTR */
+        }
+        .list-item .actions { margin-left: 0; margin-right: 1rem; /* LTR */ }
+        .list-item .actions .btn .material-icons {
+            font-size: 1.1em; vertical-align: middle;
+        }
+
+        /* Details View */
+        .items-container.details-view {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+        }
+        .details-view .list-item { /* Uses .list-item as base */
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            transition: box-shadow 0.3s ease;
+        }
+        .details-view .list-item:hover{
+             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .details-view .list-item img { /* Override if needed from general .list-item img */
+            width: 60px; height: 60px;
+            margin-right: 10px; margin-left: 0; /* LTR */
+            cursor: pointer;
+        }
+        .details-view .list-item-info { text-align:left; /* LTR */ }
+        .details-view .list-item-info h3 {
+            font-size: 0.95em;
+            margin: 0 0 5px;
+            color: #34495e;
+        }
+        .details-view .list-item-info p {
+            font-size: 0.75em;
+            margin: 3px 0;
+            line-height: 1.3;
+            color: #7f8c8d;
+        }
+        .details-view .list-item-info .item-description-detail {
+            white-space: nowrap;
+            overflow: hidden;
+			    font-weight: bold;
+			color: #ff6f00;
+            text-overflow: ellipsis;
+            max-width: 150px; /* Adjust as needed */
+            display: block;
+        }
+        .details-view .list-item-info p .quantity {
+             font-weight: bold; color: #1abc9c;
+             font-size: 1em;
+        }
+        .details-view .list-item .low-stock-warning {
+            background-color: #e74c3c; color: white;
+            padding: 3px 8px; border-radius: 3px;
+            font-size: 0.7em;
+            margin-left: auto; margin-right: 5px; /* LTR */
+        }
+        .details-view .list-item .actions {
+            margin-right: 15px; margin-left: 0; /* LTR */
+        }
+        .details-view .list-item .actions button { /* Same as .item-card actions */
+            background: none; border: none; color: #3498db; cursor: pointer;
+            font-size: 0.8em; padding: 3px 6px; margin: 0 3px;
+        }
+        .details-view .list-item .actions button:hover { text-decoration: underline; }
+
+        /* Compact Row View */
+        .items-container.compact-row-view {
+            display: flex; flex-direction: column; gap: 0.5rem;
+        }
+        .compact-row-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0.6rem 0.75rem; background-color: #fff;
+            border: 1px solid #e9ecef; border-radius: 0.25rem; font-size: 0.9em;
+        }
+        .compact-row-item:hover { background-color: #f8f9fa; }
+        .compact-row-item img { width: 35px; height: 35px; object-fit: cover; border-radius: 0.2rem; margin-right: 0.75rem; cursor:zoom-in; /* LTR */}
+        .compact-row-item .item-info-compact { display: flex; align-items: center; flex-grow: 1; text-align:left; /* LTR */}
+        .compact-row-item .item-name { font-weight: 500; color: #212529; }
+        .compact-row-item .item-store-compact { font-size: 0.8em; color: #6c757d; margin-left: 0.5rem; /* LTR */}
+        .compact-row-item .item-status-actions { display: flex; align-items: center; }
+        .compact-row-item .item-quantity-compact { font-weight: bold; color: #0d6efd; font-size: 0.9em; margin-right: 0.75rem; /* LTR */}
+        .compact-row-item .low-stock-warning-compact { background-color: #dc3545; color: white; padding: 0.1rem 0.3rem; border-radius: 0.2rem; font-size: 0.65em; margin-right: 0.5rem; /* LTR */}
+        .compact-row-item .actions .btn .material-icons { font-size: 1em; vertical-align: middle; }
+
+
+        /* Image Zoom Overlay */
+        .image-zoom-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.8); display: none;
+            justify-content: center; align-items: center; z-index: 1070;
+        }
+        .image-zoom-overlay img {
+            max-width: 85%; max-height: 85%; border: 3px solid white;
+            border-radius: 5px; box-shadow: 0 0 25px rgba(0,0,0,0.5);
+        }
+        #hover-zoom-preview {
+            position: fixed; border: 2px solid #0d6efd; border-radius: 5px; padding: 5px;
+            background-color: white; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 1080;
+            pointer-events: none;
+        }
+        #hover-zoom-preview img { max-width: 250px; max-height: 250px; }
+
+
+        /* Modal */
+        .modal {
+            display: none; position: fixed; z-index: 1050;
+            left: 0; top: 0; width: 100%; height: 100%;
+            overflow: auto; background-color: rgba(0,0,0,0.5);
+        }
+        .modal-content {
+            background-color: #fefefe; margin: 5% auto; padding: 0;
+            border: 1px solid #888; width: 80%; max-width: 600px;
+            border-radius: 0.3rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .modal-header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1rem 1rem; border-bottom: 1px solid #dee2e6;
+        }
+        .modal-header h3 { margin: 0; font-size: 1.5em; color: #343a40; }
+        .btn-close-custom { /* Bootstrap's default close button is fine for LTR/RTL */
+            background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+            border: 0; border-radius: .25rem; opacity: .5;
+            width: 1.5em; height: 1.5em; padding: .25em .25em;
+            cursor: pointer;
+        }
+        .btn-close-custom:hover { opacity: .75; }
+        .modal-body { padding: 1rem; }
+        .modal-footer {
+            display: flex; justify-content: flex-end; /* LTR: buttons on the right */
+            padding: 0.75rem 1rem; border-top: 1px solid #dee2e6;
+            gap: 0.5rem;
+        }
+        .modal-content label { margin-bottom: 0.5rem; font-weight: bold; }
+
+        /* Spinner Overlay */
+        .spinner-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(255, 255, 255, 0.75);
+            display: none;
+            justify-content: center; align-items: center;
+            z-index: 2000;
+        }
+
+
+        /* Print styles */
+        @media print {
+            body { display: block; font-size: 10pt; }
+            .sidebar, .header .controls .btn:not(#printReportBtn), .header .controls .form-select, .header .controls .form-control, .header .controls .dropdown,
+            .modal, .image-zoom-overlay, .spinner-overlay,
+            #pullFromSheetsBtn, #addStoreCategoryBtn,
+            .item-card .actions, .list-item .actions, .compact-row-item .actions, .details-view .list-item .actions,
+            .no-print {
+                display: none !important;
+            }
+            .main-content { width: 100%; padding: 0; overflow: visible; height: auto; }
+            .header h1 { text-align: center; width: 100%; font-size: 1.5em; }
+            .items-container { display: block; }
+            .item-card, .details-view .list-item, .list-item, .compact-row-item {
+                box-shadow: none !important;
+                border: 1px solid #ccc !important;
+                page-break-inside: avoid;
+                margin-bottom: 10px;
+            }
+            .item-card img, .details-view .list-item img, .list-item img, .compact-row-item img {
+                 max-height: 100px !important; max-width: 100px !important;
+            }
+            .items-container.grid-view { grid-template-columns: repeat(2, 1fr) !important; }
+            .item-card { text-align: left !important; /* LTR */ }
+            .details-view .list-item-info { text-align: left !important; /* LTR */ }
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2><span class="material-icons">inventory_2</span>Stores</h2>
+        </div>
+        <ul id="store-list" class="list-group list-group-flush">
+            </ul>
+        <button id="addStoreCategoryBtn" class="btn btn-primary w-100 mt-3">
+            <span class="material-icons" style="font-size: 1.1em; vertical-align: text-bottom; margin-right: 0.3em;">add_circle_outline</span> Add Store/Category
+        </button>
+    </aside>
+
+    <main class="main-content">
+        <header class="header">
+            <h1 id="current-store-title">All Items</h1>
+            <div class="controls">
+                <input type="search" id="searchInput" class="form-control form-control-sm" placeholder="Search item, store, description...">
+                
+                <div class="dropdown">
+                    <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" id="advancedFilterBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="material-icons" style="font-size: 1.1em; vertical-align: text-bottom;">filter_list</span> <span class="d-none d-md-inline">Advanced Filter</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end p-3 shadow-sm" aria-labelledby="advancedFilterBtn" style="min-width: 280px;">
+                        <li>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="" id="filterLowStock">
+                                <label class="form-check-label" for="filterLowStock">
+                                    Show only low stock items
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <label for="filterByCategory" class="form-label small">Filter by Category/Store:</label>
+                            <select id="filterByCategory" class="form-select form-select-sm mb-2">
+                                <option value="">All Categories/Stores</option>
+                                {/* Options will be populated by JavaScript */}
+                            </select>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><button type="button" class="btn btn-primary btn-sm w-100" id="applyAdvancedFilterBtn">Apply Filter</button></li>
+                        <li><button type="button" class="btn btn-light btn-sm w-100 mt-1 border" id="clearAdvancedFilterBtn">Clear Advanced Filter</button></li>
+                    </ul>
+                </div>
+                
+                <select id="viewModeSelector" class="form-select form-select-sm" style="width: auto;">
+                    <option value="grid">Grid View</option>
+                    <option value="list">List View</option>
+                    <option value="details">Details View</option>
+                    <option value="compact-row">Compact View</option>
+                </select>
+                <button id="addItemBtn" class="btn btn-success btn-sm">
+                    <span class="material-icons">add</span> Add Item
+                </button>
+                <button id="printReportBtn" class="btn btn-outline-primary btn-sm">
+                    <span class="material-icons">print</span> Print Report
+                </button>
+                 <button id="pullFromSheetsBtn" class="btn btn-info btn-sm text-white">
+                    <span class="material-icons">cloud_download</span> Google Sheets
+                </button>
+				
+
+            <a href="alerts.html" class="btn btn-outline-warning btn-sm">
+                <span class="material-icons" style="font-size: 1.1em; vertical-align: text-bottom;">notification_important</span> Alerts
+            </a>
+
+
+                <a href="print_advanced.html" id="advancedPrintPageBtn" class="btn btn-outline-info btn-sm">
+                    <span class="material-icons" style="font-size: 1.1em; vertical-align: text-bottom;">print</span> Advanced Print
+                </a>
+				
+				
+            </div>
+        </header>
+
+        <div id="itemsDisplay" class="items-container grid-view">
+             <p class="no-items-message alert alert-info" style="display: none;">No items to display in this store/category.</p>
+        </div>
+    </main>
+
+    <div id="imageZoomOverlay" class="image-zoom-overlay">
+        <img id="zoomedImage" src="" alt="Zoomed Image">
+    </div>
+    <div id="hover-zoom-preview" style="display:none;"><img></div>
+
+
+    <div id="itemModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="itemModalTitle">Add New Item</h3>
+                <button type="button" class="btn-close-custom" onclick="closeItemModal()"></button>
+            </div>
+            <form id="itemForm">
+                <div class="modal-body">
+                    <input type="hidden" id="itemId">
+
+                    <div class="mb-3">
+                        <label for="itemName" class="form-label">Item Name:</label>
+                        <input type="text" id="itemName" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="itemStore" class="form-label">Main Store:</label>
+                        <select id="itemStore" class="form-select" required><option value="">-- Select Store --</option></select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="itemSubcategory" class="form-label">Subcategory (Optional):</label>
+                        <input type="text" id="itemSubcategory" class="form-control" placeholder="e.g., Hand Tools, Screens">
+                    </div>
+
+                    <div class="row g-2 mb-3">
+                        <div class="col-md">
+                            <label for="itemQuantity" class="form-label">Quantity:</label>
+                            <input type="number" id="itemQuantity" class="form-control" required min="0" value="1">
+                        </div>
+                        <div class="col-md">
+                            <label for="itemMinQuantity" class="form-label">Alert Threshold (Min. Qty):</label>
+                            <input type="number" id="itemMinQuantity" class="form-control" required min="0" value="1">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Upload Image:</label>
+                        <input type="url" id="itemImageUrl" class="form-control mb-2" placeholder="Enter image URL or it will be auto-filled">
+                        <div class="d-flex gap-2 mb-2">
+                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="pasteImageFromClipboard()">
+                                <span class="material-icons" style="font-size: 1em; vertical-align: middle; margin-right: 0.2em;">content_paste</span> Paste
+                            </button>
+                            <label for="itemImageFile" class="btn btn-sm btn-outline-success">
+                                <span class="material-icons" style="font-size: 1em; vertical-align: middle; margin-right: 0.2em;">upload_file</span> Choose File...
+                            </label>
+                            <input type="file" id="itemImageFile" accept="image/*" style="display: none;">
+                        </div>
+                        <div id="imagePreviewContainer" class="border rounded p-2 text-center" style="min-height: 150px; display: flex; justify-content: center; align-items: center; background-color: #f8f9fa;">
+                            <img id="imagePreview" src="" alt="Image Preview" style="max-width: 100%; max-height: 140px; display: none; object-fit: contain;">
+                            <span id="noImagePreview" class="text-muted">No image selected</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="itemDescription" class="form-label">Item Description (Optional):</label>
+                        <textarea id="itemDescription" class="form-control" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary cancel-btn" onclick="closeItemModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary save-btn">
+                        <span class="material-icons" style="font-size: 1.1em; vertical-align: text-bottom; margin-right: 0.2em;">save</span> Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="categoryModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="categoryModalTitle">Add Store or Subcategory</h3>
+                <button type="button" class="btn-close-custom" onclick="closeCategoryModal()"></button>
+            </div>
+            <form id="categoryForm">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="categoryType" class="form-label">Type:</label>
+                        <select id="categoryType" class="form-select">
+                            <option value="store">New Main Store</option>
+                            <option value="subcategory">Subcategory for Existing Store</option>
+                        </select>
+                    </div>
+
+                    <div id="parentStoreSelectorDiv" class="mb-3" style="display:none;">
+                        <label for="parentStore" class="form-label">Parent Store for Subcategory:</label>
+                        <select id="parentStore" class="form-select"><option value="">-- Select Parent Store --</option></select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="categoryName" class="form-label">Store/Category Name:</label>
+                        <input type="text" id="categoryName" class="form-control" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary cancel-btn" onclick="closeCategoryModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary save-btn">
+                       <span class="material-icons" style="font-size: 1.1em; vertical-align: text-bottom; margin-right: 0.2em;">add</span> Add
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="spinnerOverlay" class="spinner-overlay">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+
+    <script>
+        const API_BASE_URL = 'http://127.0.0.1:8111';
+        const IMGUR_CLIENT_ID = "633f630fa3d4064";
+
+        let stores = {};
+        let allItems = [];
+        let nextItemId = 1;
+        let currentViewMode = 'grid';
+        let currentFilter = { type: 'all', value: null };
+        let advancedFilters = {
+            lowStock: false,
+            category: ''
+        };
+
+        const storeListEl = document.getElementById('store-list');
+        const itemsDisplayEl = document.getElementById('itemsDisplay');
+        const currentStoreTitleEl = document.getElementById('current-store-title');
+        const viewModeSelector = document.getElementById('viewModeSelector');
+        const searchInput = document.getElementById('searchInput');
+        const addItemBtn = document.getElementById('addItemBtn');
+        const printReportBtn = document.getElementById('printReportBtn');
+        const noItemsMessageEl = document.querySelector('.no-items-message');
+        const pullFromSheetsBtn = document.getElementById('pullFromSheetsBtn');
+        const spinnerOverlay = document.getElementById('spinnerOverlay');
+        const itemModal = document.getElementById('itemModal');
+        const itemForm = document.getElementById('itemForm');
+        const itemModalTitle = document.getElementById('itemModalTitle');
+        const itemIdInput = document.getElementById('itemId');
+        const itemNameInput = document.getElementById('itemName');
+        const itemStoreSelect = document.getElementById('itemStore');
+        const itemSubcategoryInput = document.getElementById('itemSubcategory');
+        const itemQuantityInput = document.getElementById('itemQuantity');
+        const itemMinQuantityInput = document.getElementById('itemMinQuantity');
+        const itemImageUrlInput = document.getElementById('itemImageUrl');
+        const itemImageFileInput = document.getElementById('itemImageFile');
+        const imagePreview = document.getElementById('imagePreview');
+        const noImagePreview = document.getElementById('noImagePreview');
+        const itemDescriptionInput = document.getElementById('itemDescription');
+        const categoryModal = document.getElementById('categoryModal');
+        const categoryForm = document.getElementById('categoryForm');
+        const categoryTypeSelect = document.getElementById('categoryType');
+        const parentStoreSelectorDiv = document.getElementById('parentStoreSelectorDiv');
+        const parentStoreSelect = document.getElementById('parentStore');
+        const categoryNameInput = document.getElementById('categoryName');
+        const addStoreCategoryBtn = document.getElementById('addStoreCategoryBtn');
+        const imageZoomOverlay = document.getElementById('imageZoomOverlay');
+        const zoomedImage = document.getElementById('zoomedImage');
+        const hoverZoomPreviewDiv = document.getElementById('hover-zoom-preview');
+        const hoverZoomImage = hoverZoomPreviewDiv.querySelector('img');
+
+        const advancedFilterBtnEl = document.getElementById('advancedFilterBtn');
+        const filterLowStockCheckbox = document.getElementById('filterLowStock');
+        const filterByCategorySelect = document.getElementById('filterByCategory');
+        const applyAdvancedFilterBtn = document.getElementById('applyAdvancedFilterBtn');
+        const clearAdvancedFilterBtn = document.getElementById('clearAdvancedFilterBtn');
+
+
+        const DEFAULT_STORES_FALLBACK = {
+            "Mechanics": { subcategories: [], items: [] },
+            "Electricity": { subcategories: [], items: [] },
+            "Fuel": { subcategories: [], items: [] },
+            "Plumbing": { subcategories: [], items: [] },
+            "Molds": { subcategories: [], items: [] },
+            "Devices": { subcategories: ["Measuring Devices", "Electronic Devices"], items: [] },
+            "Stationery": { subcategories: [], items: [] },
+            "Cleaning Tools": { subcategories: [], items: [] },
+            "Samples": { subcategories: [], items: [] },
+            "Safety Equipment": { subcategories: [], items: [] },
+            "Other": { subcategories: [], items: [] }
+        };
+
+        function showSpinner() { if(spinnerOverlay) spinnerOverlay.style.display = 'flex'; }
+        function hideSpinner() { if(spinnerOverlay) spinnerOverlay.style.display = 'none'; }
+
+        async function loadDataFromServer() {
+            showSpinner();
+            try {
+                const response = await fetch(`${API_BASE_URL}/data`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}, Message: ${await response.text()}`);
+                }
+                const data = await response.json();
+                stores = data.stores || JSON.parse(JSON.stringify(DEFAULT_STORES_FALLBACK));
+                allItems = data.allItems || [];
+                nextItemId = data.nextItemId || 1;
+            } catch (error) {
+                console.error("Failed to load data from server:", error);
+                alert("Failed to load data from server. Ensure the local server (main.py) is running on the correct port.\nDefault data will be used.");
+                stores = JSON.parse(JSON.stringify(DEFAULT_STORES_FALLBACK));
+                allItems = []; nextItemId = 1;
+            } finally {
+                hideSpinner();
+            }
+        }
+
+        async function saveDataToServer() {
+            showSpinner();
+            try {
+                const payload = { stores, allItems, nextItemId };
+                const response = await fetch(`${API_BASE_URL}/data`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload),
+                });
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorText}`);
+                }
+                const result = await response.json();
+                console.log("Data saved to server successfully:", result.message);
+            } catch (error) {
+                console.error("Failed to save data to server:", error);
+                alert("Failed to save data to server. Recent changes might not be saved. Check if the server is running.");
+            } finally {
+                hideSpinner();
+            }
+        }
+
+        function renderSidebar() {
+            storeListEl.innerHTML = '';
+            const allItemsListItem = createSidebarListItem('View All', 'all_inclusive', () => { // Translated
+                currentFilter = { type: 'all', value: null };
+                currentStoreTitleEl.textContent = 'All Items'; // Translated
+                setActiveSidebarItem(null);
+                renderItems();
+            }, currentFilter.type === 'all', false);
+            storeListEl.appendChild(allItemsListItem);
+
+            Object.keys(stores).sort().forEach(storeName => {
+                const storeData = stores[storeName];
+                const hasSubcategories = storeData.subcategories && storeData.subcategories.length > 0;
+                const storeListItem = createSidebarListItem(storeName, 'folder', (e) => {
+                    e.preventDefault();
+                    const linkElement = e.currentTarget;
+                    const subcategoriesUl = linkElement.nextElementSibling;
+                    if (hasSubcategories) {
+                        linkElement.classList.toggle('open');
+                        if(subcategoriesUl && subcategoriesUl.classList.contains('subcategories')) {
+                           subcategoriesUl.style.maxHeight = linkElement.classList.contains('open') ? subcategoriesUl.scrollHeight + "px" : "0";
+                        }
+                    }
+                    if (!e.target.classList.contains('arrow-icon') || !hasSubcategories) {
+                        currentFilter = { type: 'store', value: storeName };
+                        currentStoreTitleEl.textContent = `Store: ${storeName}`; // Translated
+                        setActiveSidebarItem(linkElement);
+                        renderItems();
+                    }
+                }, (currentFilter.type === 'store' && currentFilter.value === storeName), hasSubcategories);
+                storeListEl.appendChild(storeListItem);
+
+                if (hasSubcategories) {
+                    const subcategoriesUl = document.createElement('ul');
+                    subcategoriesUl.className = 'subcategories list-group list-group-flush ps-4'; // LTR: ps-4 instead of pe-4
+                    (storeData.subcategories.sort()).forEach(subcatName => {
+                         const subcatListItem = createSidebarListItem(subcatName, 'description', (e) => {
+                            e.stopPropagation();
+                            currentFilter = { type: 'subcategory', value: subcatName, parentStore: storeName };
+                            currentStoreTitleEl.textContent = ` ${storeName} > ${subcatName}`; // Translated
+                            setActiveSidebarItem(e.currentTarget);
+                            renderItems();
+                        }, (currentFilter.type === 'subcategory' && currentFilter.parentStore === storeName && currentFilter.value === subcatName), false, true);
+                        subcategoriesUl.appendChild(subcatListItem);
+                    });
+                    storeListItem.appendChild(subcategoriesUl);
+                    const storeLinkElement = storeListItem.querySelector('a.list-group-item');
+                    if (storeLinkElement && ((currentFilter.type === 'subcategory' && currentFilter.parentStore === storeName) || storeLinkElement.classList.contains('open'))) {
+                        storeLinkElement.classList.add('open');
+                         setTimeout(()=> { if (subcategoriesUl.isConnected) subcategoriesUl.style.maxHeight = subcategoriesUl.scrollHeight + "px"; } ,0);
+                    }
+                }
+            });
+            populateStoreSelects();
+            populateAdvancedFilterCategories();
+        }
+
+        function createSidebarListItem(text, iconName, onClick, isActive, hasArrow, isSubcategory = false) {
+            const li = document.createElement('li');
+            const link = document.createElement('a');
+            link.className = 'list-group-item list-group-item-action';
+            if (isActive) link.classList.add('active');
+            const contentWrapper = document.createElement('span');
+            contentWrapper.className = 'item-text-icon-wrapper';
+            const icon = document.createElement('span');
+            icon.className = 'material-icons item-icon';
+            icon.textContent = iconName;
+            contentWrapper.appendChild(icon);
+            contentWrapper.appendChild(document.createTextNode(text));
+            link.appendChild(contentWrapper);
+            if (hasArrow) {
+                const arrow = document.createElement('span');
+                arrow.className = 'material-icons arrow-icon';
+                arrow.textContent = 'keyboard_arrow_left'; // Points left, rotates down when open
+                link.appendChild(arrow);
+            }
+            link.href = '#';
+            link.addEventListener('click', onClick);
+            li.appendChild(link);
+            return li;
+        }
+
+        function setActiveSidebarItem(activeLinkElement) {
+            document.querySelectorAll('#store-list .list-group-item').forEach(link => {
+                link.classList.remove('active');
+            });
+            if (activeLinkElement) {
+                activeLinkElement.classList.add('active');
+                if(activeLinkElement.closest('.subcategories')){
+                    const parentStoreLink = activeLinkElement.closest('ul.subcategories')?.parentElement?.querySelector('a.list-group-item');
+                    if(parentStoreLink && !parentStoreLink.classList.contains('open')){
+                        parentStoreLink.classList.add('open');
+                        const subUl = parentStoreLink.nextElementSibling;
+                        if(subUl && subUl.classList.contains('subcategories')){
+                             setTimeout(()=> subUl.style.maxHeight = subUl.scrollHeight + "px", 0);
+                        }
+                    }
+                }
+            } else {
+                const firstLinkInSidebar = storeListEl.querySelector('.list-group-item');
+                if (firstLinkInSidebar && firstLinkInSidebar.textContent.includes('View All') ){ // Translated
+                    firstLinkInSidebar.classList.add('active');
+                }
+            }
+        }
+
+        function renderItems() {
+            itemsDisplayEl.innerHTML = '';
+            itemsDisplayEl.className = 'items-container';
+            itemsDisplayEl.classList.add(`${currentViewMode}-view`);
+
+            let itemsToDisplay = getFilteredItems();
+            const searchTerm = searchInput.value.toLowerCase().trim();
+
+            if (searchTerm) {
+                itemsToDisplay = itemsToDisplay.filter(item =>
+                    (item.name && item.name.toLowerCase().includes(searchTerm)) ||
+                    (item.store && item.store.toLowerCase().includes(searchTerm)) ||
+                    (item.subcategory && String(item.subcategory).toLowerCase().includes(searchTerm)) ||
+                    (item.description && item.description.toLowerCase().includes(searchTerm))
+                );
+            }
+
+            if (itemsToDisplay.length === 0) {
+                noItemsMessageEl.style.display = 'block';
+                itemsDisplayEl.appendChild(noItemsMessageEl);
+            } else {
+                noItemsMessageEl.style.display = 'none';
+                itemsToDisplay.forEach(item => {
+                    const itemEl = createItemElement(item, currentViewMode);
+                    if(itemEl) itemsDisplayEl.appendChild(itemEl);
+                });
+            }
+        }
+
+        function getFilteredItems() {
+            let filtered = Array.isArray(allItems) ? [...allItems] : [];
+
+            if (currentFilter.type === 'store') {
+                filtered = filtered.filter(item => item.store === currentFilter.value);
+            } else if (currentFilter.type === 'subcategory') {
+                filtered = filtered.filter(item => item.store === currentFilter.parentStore && String(item.subcategory) === currentFilter.value);
+            }
+
+            if (advancedFilters.lowStock) {
+                filtered = filtered.filter(item => item.quantity <= item.minQuantity);
+            }
+
+            if (advancedFilters.category) {
+                const [type, storeName, subcategoryName] = advancedFilters.category.split(':');
+                if (type === 'store_adv') {
+                    filtered = filtered.filter(item => item.store === storeName);
+                } else if (type === 'subcategory_adv') {
+                    filtered = filtered.filter(item => item.store === storeName && String(item.subcategory) === subcategoryName);
+                }
+            }
+            return filtered;
+        }
+        
+function createItemElement(item, viewMode) {
+            const defaultImgUrlGrid = 'https://via.placeholder.com/150?text=No+Image';
+            const defaultImgUrlDetails = 'https://via.placeholder.com/60?text=No+Img';
+            const itemImageSrc = item.imageUrl;
+            const lowStock = item.quantity <= item.minQuantity;
+            const lowStockWarningText = 'Low';
+            const subcategoryDisplay = item.subcategory ? ` > ${String(item.subcategory)}` : '';
+            const originalActionsHtml = `<div class="actions"><button onclick="editItem(${item.id})">✏️ Edit</button><button onclick="deleteItem(${item.id})">🗑️ Delete</button></div>`;
+
+            let itemWrapper = document.createElement('div');
+
+            if (viewMode === 'grid') {
+                itemWrapper.className = 'item-card';
+                itemWrapper.innerHTML = `
+                    ${lowStock ? `<span class="low-stock-warning">${lowStockWarningText}</span>` : ''}
+                    <img src="${itemImageSrc || defaultImgUrlGrid}" alt="${item.name}" data-zoomable>
+                    <h3>${item.name}</h3>
+                    <p>Store: ${item.store}${subcategoryDisplay}</p>
+                    <p>Quantity: <span class="quantity">${item.quantity}</span> (Min: ${item.minQuantity})</p>
+                    ${originalActionsHtml}`;
+            } else if (viewMode === 'list') {
+                itemWrapper.className = 'list-item';
+                const quantityTextList = `Quantity: <span class="quantity">${item.quantity}</span> (Min: ${item.minQuantity})`;
+                const actionsHtmlList = `
+                    <div class="actions d-flex justify-content-center gap-2">
+                        <button class="btn btn-sm btn-outline-primary" onclick="editItem(${item.id})" title="Edit"><span class="material-icons">edit</span></button>
+                        <button class="btn btn-sm btn-outline-danger" onclick="deleteItem(${item.id})" title="Delete"><span class="material-icons">delete</span></button>
+                    </div>`;
+                itemWrapper.innerHTML = `
+                    <img src="${item.imageUrl || 'https://via.placeholder.com/70x70?text=No+Image'}" alt="${item.name}" data-zoomable>
+                    <div class="list-item-info">
+                        <h3>${item.name}</h3>
+                        <p class="small text-muted mb-1">Store: ${item.store}${subcategoryDisplay}</p>
+                        <p class="quantity-info small mb-1">${quantityTextList}</p>
+<p class="small text-muted" style="color: red; font-weight: bold; max-height: 40px; overflow: hidden; text-overflow: ellipsis;">
+  ${item.description || 'No description.'}
+</p>
+
+                    </div>
+                    ${lowStock ? `<span class="low-stock-warning badge bg-danger ms-auto me-2">${lowStockWarningText}</span>` : ''}
+                    <div class="actions"> ${actionsHtmlList} </div>`;
+            } else if (viewMode === 'details') {
+                itemWrapper.className = 'list-item';
+                const shortDescription = item.description ? (item.description.length > 50 ? item.description.substring(0, 47) + "..." : item.description) : 'No description.';
+                itemWrapper.innerHTML = `
+                    <img src="${itemImageSrc || defaultImgUrlDetails}" alt="${item.name}" data-zoomable>
+                    <div class="list-item-info">
+                        <h3>${item.name}</h3>
+                        <p>Store: ${item.store}${subcategoryDisplay}</p>
+                        <p>Quantity: <span class="quantity">${item.quantity}</span> (Min: ${item.minQuantity})</p>
+                        <p class="item-description-detail" title="${item.description || ''}">${shortDescription}</p>
+                    </div>
+                    ${originalActionsHtml}
+                    ${lowStock ? `<span class="low-stock-warning">${lowStockWarningText}</span>` : ''}`;
+            } else if (viewMode === 'compact-row') {
+                itemWrapper.className = 'compact-row-item';
+                const actionsHtmlCompact = `
+                    <div class="actions">
+                        <button class="btn btn-sm btn-outline-primary py-0 px-1" onclick="editItem(${item.id})" title="Edit"><span class="material-icons" style="font-size:1em;">edit</span></button>
+                        <button class="btn btn-sm btn-outline-danger py-0 px-1" onclick="deleteItem(${item.id})" title="Delete"><span class="material-icons" style="font-size:1em;">delete</span></button>
+                    </div>`;
+                itemWrapper.innerHTML = `
+                    <div class="item-info-compact">
+                        <img src="${item.imageUrl || 'https://via.placeholder.com/35x35?text=.'}" alt="${item.name}" data-zoomable>
+                        <span class="item-name">${item.name}</span>
+                        <span class="item-store-compact text-muted">(${item.store}${subcategoryDisplay})</span>
+                    </div>
+                    <div class="item-status-actions">
+                        ${lowStock ? `<span class="low-stock-warning-compact">${lowStockWarningText.replace(' Stock!', '')}</span>` : ''}
+                        <span class="item-quantity-compact">Qty: ${item.quantity}</span>
+                        ${actionsHtmlCompact}
+                    </div>`;
+            }
+
+            if (itemWrapper) {
+                const imgElement = itemWrapper.querySelector('img[data-zoomable]');
+                if (imgElement) {
+                    imgElement.addEventListener('click', () => showImageZoom(imgElement.src));
+                    imgElement.style.cursor = 'zoom-in';
+                    imgElement.addEventListener('mouseenter', (e) => {
+                        if(e.target.src.includes('placeholder.com')) return;
+                        hoverZoomImage.src = e.target.src;
+                        hoverZoomPreviewDiv.style.display = 'block';
+                        positionHoverZoom(e, hoverZoomPreviewDiv);
+                    });
+                    imgElement.addEventListener('mousemove', (e) => {
+                        if (hoverZoomPreviewDiv.style.display === 'block') positionHoverZoom(e, hoverZoomPreviewDiv);
+                    });
+                    imgElement.addEventListener('mouseleave', () => {
+                        hoverZoomPreviewDiv.style.display = 'none';
+                    });
+                }
+            }
+            return itemWrapper;
+        }
+
+        function positionHoverZoom(e, div) {
+            if(!div) return;
+            let x = e.clientX + 15;
+            let y = e.clientY + 15;
+            const winWidth = window.innerWidth;
+            const winHeight = window.innerHeight;
+            const divWidth = div.offsetWidth || 260; 
+            const divHeight = div.offsetHeight || 260;
+            if (x + divWidth > winWidth -10) x = e.clientX - divWidth - 15;
+            if (y + divHeight > winHeight -10) y = e.clientY - divHeight - 15;
+            if (x < 10) x = 10;
+            if (y < 10) y = 10;
+            div.style.left = x + 'px';
+            div.style.top = y + 'px';
+        }
+
+        function openItemModal(itemToEdit = null) {
+            itemForm.reset();
+            itemIdInput.value = '';
+            populateStoreSelects();
+            itemImageUrlInput.value = '';
+            itemImageFileInput.value = '';
+            imagePreview.src = '';
+            imagePreview.style.display = 'none';
+            noImagePreview.style.display = 'inline';
+            if (itemToEdit) {
+                itemModalTitle.textContent = 'Edit Item'; // Translated
+                itemIdInput.value = itemToEdit.id;
+                itemNameInput.value = itemToEdit.name;
+                itemStoreSelect.value = itemToEdit.store;
+                itemSubcategoryInput.value = itemToEdit.subcategory || '';
+                itemQuantityInput.value = itemToEdit.quantity;
+                itemMinQuantityInput.value = itemToEdit.minQuantity;
+                itemDescriptionInput.value = itemToEdit.description || '';
+                if (itemToEdit.imageUrl) {
+                    itemImageUrlInput.value = itemToEdit.imageUrl;
+                    imagePreview.src = itemToEdit.imageUrl;
+                    imagePreview.style.display = 'block';
+                    noImagePreview.style.display = 'none';
+                }
+            } else {
+                itemModalTitle.textContent = 'Add New Item'; // Translated
+                if(currentFilter.type === 'store'){
+                    itemStoreSelect.value = currentFilter.value;
+                } else if (currentFilter.type === 'subcategory'){
+                    itemStoreSelect.value = currentFilter.parentStore;
+                    itemSubcategoryInput.value = currentFilter.value;
+                }
+            }
+            itemModal.style.display = 'block';
+            document.body.classList.add('modal-open');
+        }
+
+        function closeItemModal() {
+            itemModal.style.display = 'none';
+            document.body.classList.remove('modal-open');
+        }
+
+        itemForm.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            showSpinner();
+            const id = itemIdInput.value ? parseInt(itemIdInput.value) : null;
+            const itemName = itemNameInput.value.trim();
+            const itemStore = itemStoreSelect.value;
+            let itemSubcategoryVal = itemSubcategoryInput.value.trim();
+            let itemSubcategory = itemSubcategoryVal === "" ? null : itemSubcategoryVal;
+            const itemQuantity = parseInt(itemQuantityInput.value);
+            const itemMinQuantity = parseInt(itemMinQuantityInput.value);
+            const itemImageUrlValue = itemImageUrlInput.value.trim();
+            const itemDescription = itemDescriptionInput.value.trim();
+
+            if (!itemName || !itemStore || isNaN(itemQuantity) || isNaN(itemMinQuantity) || itemQuantity < 0 || itemMinQuantity < 0) {
+                alert('Please fill in the required fields (Item Name, Store, Quantity, Min. Qty) with valid values.'); // Translated
+                hideSpinner(); return;
+            }
+            if (itemSubcategory && stores[itemStore] && !stores[itemStore].subcategories.includes(itemSubcategory)) {
+                if(confirm(`Subcategory "${itemSubcategory}" does not exist in store "${itemStore}". Do you want to add it?`)){ // Translated
+                    stores[itemStore].subcategories.push(itemSubcategory);
+                    renderSidebar(); 
+                } else {
+                    itemSubcategoryInput.focus(); hideSpinner(); return;
+                }
+            }
+            const newItemData = {
+                name: itemName, store: itemStore, subcategory: itemSubcategory,
+                quantity: itemQuantity, minQuantity: itemMinQuantity,
+                imageUrl: itemImageUrlValue, description: itemDescription,
+            };
+            if (id) {
+                const index = allItems.findIndex(item => item.id === id);
+                if (index !== -1) allItems[index] = { ...allItems[index], ...newItemData };
+            } else {
+                newItemData.id = nextItemId++;
+                allItems.push(newItemData);
+            }
+            await saveDataToServer();
+            renderItems();
+            closeItemModal();
+        });
+
+        async function pasteImageFromClipboard() {
+            let uploaderCalled = false;
+            try {
+                const permission = await navigator.permissions.query({ name: 'clipboard-read' });
+                if (permission.state === 'denied') {
+                    alert('Clipboard access denied. Please enable it in your browser settings.'); return; // Translated
+                }
+                showSpinner();
+                const clipboardItems = await navigator.clipboard.readItems();
+                for (const clipboardItem of clipboardItems) {
+                    for (const type of clipboardItem.types) {
+                        if (type.startsWith('image/')) {
+                            const blob = await clipboardItem.getType(type);
+                            const reader = new FileReader();
+                            reader.onload = (e) => {
+                                imagePreview.src = e.target.result;
+                                imagePreview.style.display = 'block'; noImagePreview.style.display = 'none';
+                            };
+                            reader.readAsDataURL(blob);
+                            uploaderCalled = true;
+                            await uploadImageToImgur(blob, "Pasted Image"); // Translated source
+                            return;
+                        }
+                    }
+                }
+                if (!uploaderCalled) alert('No image found in clipboard.'); // Translated
+            } catch (err) {
+                console.error('Failed to read clipboard:', err);
+                alert('Error reading from clipboard. Ensure you are using HTTPS and have an image in the clipboard.'); // Translated
+            } finally {
+                 if (!uploaderCalled) hideSpinner();
+            }
+        }
+
+        itemImageFileInput.addEventListener('change', async function() {
+            const file = this.files && this.files[0];
+            if (file) {
+                showSpinner();
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = 'block'; noImagePreview.style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+                await uploadImageToImgur(file, "File Upload"); // Translated source
+            }
+        });
+
+        async function uploadImageToImgur(imageFileOrBlob, sourceType = "File") { // Translated default source
+            const formData = new FormData();
+            formData.append('image', imageFileOrBlob);
+            const saveButton = itemForm.querySelector('.save-btn');
+            const originalButtonContent = saveButton.innerHTML;
+            saveButton.innerHTML = `<span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span> Uploading...`; // Translated
+            saveButton.disabled = true;
+            try {
+                const response = await fetch('https://api.imgur.com/3/image', {
+                    method: 'POST',
+                    headers: { 'Authorization': `Client-ID ${IMGUR_CLIENT_ID}` },
+                    body: formData
+                });
+                const data = await response.json();
+                if (data.success) {
+                    itemImageUrlInput.value = data.data.link;
+                } else {
+                    console.error('Failed to upload image to Imgur:', data);
+                    alert(`Failed to upload image from (${sourceType}). Error details in console. You can enter a URL manually.`); // Translated
+                    imagePreview.src = ''; imagePreview.style.display = 'none'; noImagePreview.style.display = 'inline';
+                }
+            } catch (error) {
+                console.error(`Error uploading image (${sourceType}) to Imgur:`, error);
+                alert(`Connection error with Imgur (${sourceType}). Please try again or use a manual URL.`); // Translated
+                imagePreview.src = ''; imagePreview.style.display = 'none'; noImagePreview.style.display = 'inline';
+            } finally {
+                saveButton.innerHTML = originalButtonContent;
+                saveButton.disabled = false;
+                hideSpinner();
+            }
+        }
+
+        itemImageUrlInput.addEventListener('input', function() {
+            if (this.value.trim() !== '') {
+                imagePreview.src = this.value;
+                imagePreview.style.display = 'block'; noImagePreview.style.display = 'none';
+            } else {
+                imagePreview.src = ''; imagePreview.style.display = 'none'; noImagePreview.style.display = 'inline';
+            }
+        });
+
+        function openCategoryModal() {
+            categoryForm.reset();
+            populateStoreSelects();
+            parentStoreSelectorDiv.style.display = categoryTypeSelect.value === 'subcategory' ? 'block' : 'none';
+            categoryModal.style.display = 'block';
+            document.body.classList.add('modal-open');
+        }
+        function closeCategoryModal() {
+            categoryModal.style.display = 'none';
+            document.body.classList.remove('modal-open');
+        }
+
+        categoryTypeSelect.addEventListener('change', function() {
+            parentStoreSelectorDiv.style.display = this.value === 'subcategory' ? 'block' : 'none';
+        });
+
+        categoryForm.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            showSpinner();
+            const type = categoryTypeSelect.value;
+            const name = categoryNameInput.value.trim();
+            if (!name) { alert('Please enter a name for the store or category.'); hideSpinner(); return; } // Translated
+            if (type === 'store') {
+                if (stores[name]) { alert('This main store already exists.'); hideSpinner(); return; } // Translated
+                stores[name] = { subcategories: [], items: [] };
+            } else if (type === 'subcategory') {
+                const parent = parentStoreSelect.value;
+                if (!parent) { alert('Please select a parent store for the subcategory.'); hideSpinner(); return; } // Translated
+                if (!stores[parent]) { alert('The selected parent store does not exist!'); hideSpinner(); return; } // Translated
+                if (stores[parent].subcategories.includes(name)) { alert(`Subcategory "${name}" already exists in store "${parent}".`); hideSpinner(); return; } // Translated
+                stores[parent].subcategories.push(name);
+            }
+            await saveDataToServer();
+            renderSidebar();
+            closeCategoryModal();
+        });
+
+        function editItem(id) {
+            const itemToEdit = allItems.find(item => item.id === id);
+            if (itemToEdit) openItemModal(itemToEdit);
+        }
+        async function deleteItem(id) {
+            if (confirm('Are you sure you want to delete this item?')) { // Translated
+                showSpinner();
+                allItems = allItems.filter(item => item.id !== id);
+                await saveDataToServer();
+                renderItems();
+            }
+        }
+
+        function populateStoreSelects() {
+            const currentStoreVal = itemStoreSelect.value;
+            const currentParentVal = parentStoreSelect.value;
+            itemStoreSelect.innerHTML = '<option value="">-- Select Store --</option>'; // Translated
+            Object.keys(stores).sort().forEach(storeName => {
+                const option = document.createElement('option');
+                option.value = storeName; option.textContent = storeName;
+                itemStoreSelect.appendChild(option);
+            });
+             if(currentStoreVal && Object.keys(stores).includes(currentStoreVal)) itemStoreSelect.value = currentStoreVal;
+            parentStoreSelect.innerHTML = '<option value="">-- Select Parent Store --</option>'; // Translated
+            Object.keys(stores).sort().forEach(storeName => {
+                const option = document.createElement('option');
+                option.value = storeName; option.textContent = storeName;
+                parentStoreSelect.appendChild(option);
+            });
+            if(currentParentVal && Object.keys(stores).includes(currentParentVal)) parentStoreSelect.value = currentParentVal;
+        }
+
+        function showImageZoom(src) {
+            zoomedImage.src = src;
+            imageZoomOverlay.style.display = 'flex';
+        }
+        imageZoomOverlay.addEventListener('click', () => { imageZoomOverlay.style.display = 'none'; });
+
+        function populateAdvancedFilterCategories() {
+            const currentCategoryFilterVal = filterByCategorySelect.value;
+            filterByCategorySelect.innerHTML = '<option value="">All Categories/Stores</option>'; // Translated
+            Object.keys(stores).sort().forEach(storeName => {
+                const storeOption = document.createElement('option');
+                storeOption.value = `store_adv:${storeName}`;
+                storeOption.textContent = `Store: ${storeName}`; // Translated
+                filterByCategorySelect.appendChild(storeOption);
+
+                if (stores[storeName].subcategories && stores[storeName].subcategories.length > 0) {
+                    stores[storeName].subcategories.sort().forEach(subcatName => {
+                        const subcatOption = document.createElement('option');
+                        subcatOption.value = `subcategory_adv:${storeName}:${subcatName}`;
+                        subcatOption.textContent = `  └ ${subcatName} (in ${storeName})`; // Translated
+                        filterByCategorySelect.appendChild(subcatOption);
+                    });
+                }
+            });
+            if (Array.from(filterByCategorySelect.options).some(opt => opt.value === currentCategoryFilterVal)) {
+                filterByCategorySelect.value = currentCategoryFilterVal;
+            } else if(currentCategoryFilterVal){
+                 filterByCategorySelect.value = "";
+                 advancedFilters.category = "";
+            }
+        }
+
+        if (advancedFilterBtnEl) {
+            advancedFilterBtnEl.addEventListener('show.bs.dropdown', function () {
+                 populateAdvancedFilterCategories();
+            });
+        }
+        
+        if(applyAdvancedFilterBtn) {
+            applyAdvancedFilterBtn.addEventListener('click', () => {
+                advancedFilters.lowStock = filterLowStockCheckbox.checked;
+                advancedFilters.category = filterByCategorySelect.value;
+                renderItems();
+                var dropdownInstance = bootstrap.Dropdown.getInstance(advancedFilterBtnEl);
+                if (dropdownInstance) {
+                    dropdownInstance.hide();
+                }
+            });
+        }
+
+        if(clearAdvancedFilterBtn) {
+            clearAdvancedFilterBtn.addEventListener('click', () => {
+                filterLowStockCheckbox.checked = false;
+                filterByCategorySelect.value = '';
+                advancedFilters.lowStock = false;
+                advancedFilters.category = '';
+                renderItems();
+                var dropdownInstance = bootstrap.Dropdown.getInstance(advancedFilterBtnEl);
+                if (dropdownInstance) {
+                    dropdownInstance.hide();
+                }
+            });
+        }
+
+
+        viewModeSelector.addEventListener('change', (e) => {
+            currentViewMode = e.target.value;
+            localStorage.setItem('inventoryViewMode', currentViewMode);
+            renderItems();
+        });
+        searchInput.addEventListener('input', () => { renderItems(); });
+        printReportBtn.addEventListener('click', () => { window.print(); });
+        addItemBtn.addEventListener('click', () => openItemModal());
+        addStoreCategoryBtn.addEventListener('click', () => openCategoryModal());
+
+        if (pullFromSheetsBtn) {
+            pullFromSheetsBtn.addEventListener('click', async () => {
+                if (!confirm('Are you sure you want to pull data from Google Sheets? This will overwrite current local data.')) { // Translated
+                    return;
+                }
+                showSpinner();
+                const pullButtonOriginalHTML = pullFromSheetsBtn.innerHTML;
+                pullFromSheetsBtn.innerHTML = `<span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span> Pulling...`; // Translated
+                pullFromSheetsBtn.disabled = true;
+                try {
+                    const response = await fetch(`${API_BASE_URL}/pull-from-google-sheets`);
+                    if (!response.ok) {
+                        const errorData = await response.json().catch(() => ({ detail: response.statusText }));
+                        throw new Error(`Failed to pull data: ${errorData.detail || response.statusText}`);
+                    }
+                    const data = await response.json();
+                    stores = data.stores || {};
+                    allItems = data.allItems || [];
+                    nextItemId = data.nextItemId || 1;
+                    renderSidebar();
+                    currentFilter = { type: 'all', value: null };
+                    currentStoreTitleEl.textContent = 'All Items'; // Translated
+                    setActiveSidebarItem(null);
+                    renderItems();
+                    alert('Data successfully pulled from Google Sheets and UI updated.'); // Translated
+                } catch (error) {
+                    console.error('Error pulling from Google Sheets:', error);
+                    alert(`Error pulling data from Google Sheets: ${error.message}`); // Translated
+                } finally {
+                    pullFromSheetsBtn.innerHTML = pullButtonOriginalHTML;
+                    pullFromSheetsBtn.disabled = false;
+                    hideSpinner();
+                }
+            });
+        }
+
+        async function initializeApp() {
+            const savedViewMode = localStorage.getItem('inventoryViewMode');
+            if (savedViewMode && ['grid', 'list', 'details', 'compact-row'].includes(savedViewMode)) {
+                currentViewMode = savedViewMode;
+                viewModeSelector.value = savedViewMode;
+            } else {
+                currentViewMode = 'grid';
+                viewModeSelector.value = 'grid';
+                localStorage.setItem('inventoryViewMode', 'grid');
+            }
+            await loadDataFromServer();
+            renderSidebar(); 
+             const firstSidebarLink = storeListEl.querySelector('a.list-group-item');
+            if (currentFilter.type === 'all' && firstSidebarLink) {
+                 setActiveSidebarItem(firstSidebarLink);
+            }
+            renderItems();
+        }
+
+        initializeApp();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
