@@ -1,1 +1,136 @@
-0
+{
+  "DZ": [
+    "توصيل 58 ولاية",
+    "الدفع عند الاستلام",
+    "livraison gratuite",
+    "للطلب ارسل",
+    "تخفيض حصري"
+  ],
+  "MA": [
+    "الدفع عند الاستلام",
+    "التوصيل بالمجان",
+    "livraison partout",
+    "للطلب عبر الواتساب",
+    "عرض خاص"
+  ],
+  "TN": [
+    "الدفع عند الاستلام",
+    "livraison rapide",
+    "توصيل كامل تراب الجمهورية",
+    "livraison gratuite"
+  ],
+  "EG": [
+    "الدفع عند الاستلام",
+    "الشحن لجميع المحافظات",
+    "الدفع بعد المعاينة",
+    "خصم خاص",
+    "اطلب الان"
+  ],
+  "SA": [
+    "الدفع عند الاستلام",
+    "شحن مجاني",
+    "خصم خاص",
+    "السعر شامل الضريبة",
+    "اطلب الان"
+  ],
+  "AE": [
+    "الدفع عند الاستلام",
+    "توصيل سريع",
+    "عرض محدود",
+    "شحن مجاني",
+    "اطلب اليوم"
+  ],
+  "QA": [
+    "الدفع عند الاستلام",
+    "توصيل لكافة المناطق",
+    "عرض خاص",
+    "اطلب الان"
+  ],
+  "KW": [
+    "الدفع عند الاستلام",
+    "توصيل فوري",
+    "الطلب عبر الموقع",
+    "خصم لفترة محدودة"
+  ],
+  "BH": [
+    "الدفع عند الاستلام",
+    "توصيل سريع",
+    "اطلب الان",
+    "شحن مجاني"
+  ],
+  "OM": [
+    "الدفع عند الاستلام",
+    "توصيل لكافة المحافظات",
+    "اطلب عبر الواتساب"
+  ],
+  "IQ": [
+    "الدفع عند الاستلام",
+    "التوصيل لكافة محافظات العراق",
+    "الحجز عبر الواتساب"
+  ],
+  "JO": [
+    "الدفع عند الاستلام",
+    "التوصيل لكافة المحافظات",
+    "اطلب الآن"
+  ],
+  "LY": [
+    "الدفع عند الاستلام",
+    "خدمة التوصيل متوفرة",
+    "اطلب الان"
+  ],
+  "FR": [
+    "livraison offerte",
+    "paiement securise",
+    "offre speciale",
+    "satisfait ou rembourse",
+    "commander maintenant"
+  ],
+  "ES": [
+    "envio gratis",
+    "pago contra reembolso",
+    "oferta limitada",
+    "comprar ahora"
+  ],
+  "IT": [
+    "spedizione gratuita",
+    "pagamento alla consegna",
+    "sconto esclusivo",
+    "ordina ora"
+  ],
+  "DE": [
+    "kostenloser versand",
+    "jetzt bestellen",
+    "begrenztes angebot",
+    "rabatt"
+  ],
+  "TR": [
+    "ucretsiz kargo",
+    "kapida odeme",
+    "hemen satin al",
+    "indirim"
+  ],
+  "US": [
+    "free shipping worldwide",
+    "get yours now",
+    "limited time offer",
+    "50% off today",
+    "buy 1 get 1"
+  ],
+  "GB": [
+    "free delivery uk",
+    "order now",
+    "limited stock",
+    "exclusive offer"
+  ],
+  "CA": [
+    "free shipping canada",
+    "order today",
+    "special discount"
+  ],
+  "ALL": [
+    "free shipping",
+    "livraison",
+    "الدفع عند الاستلام",
+    "order now"
+  ]
+}
